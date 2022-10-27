@@ -1,0 +1,65 @@
+-- Define Library
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/UI-Libraries/main/Vynixius/Source.lua"))()
+
+-- Create Window
+local Window = Library:AddWindow({
+	title = {"! Maniac", "Dark Hub"},
+	theme = {
+		Accent = Color3.fromRGB(143, 0, 255)
+	},
+	key = Enum.KeyCode.LeftControl,
+	default = true
+})
+
+-- Tabs
+local BlatantTab = Window:AddTab("Blatant", {default = false})
+local PlayerTab = Window:AddTab("LocalPlayer", {default = false})
+
+-- Sections
+local GameSection = BlatantTab:AddSection("Game Fucker", {default = false})
+local MovementSection = PlayerTab:AddSection("Movement", {default = false})
+local PlayerSection = PlayerTab:AddSection("Player", {default = false})
+
+-- Blatant
+local Button = GameSection:AddButton("Nextbot Fucker", function()
+	game.Players.LocalPlayer.Character.Humanoid:Remove()
+    Instance.new('Humanoid', game.Players.LocalPlayer.Character)
+end)
+
+-- Movement
+local Button = MovementSection:AddButton("Decent Speed", function()
+	while wait() do
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 35
+    end
+end)
+
+local Button = MovementSection:AddButton("Big Speed", function()
+	while wait() do
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 75
+    end
+end)
+
+local Button = MovementSection:AddButton("Bigger Speed", function()
+	while wait() do
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 125
+    end
+end)
+
+local Button = MovementSection:AddButton("INSANE Speed", function()
+	while wait() do
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 300
+    end
+end)
+
+-- Player
+local Button = PlayerSection:AddButton("Force Respawn", function()
+	game:GetService("ReplicatedStorage").events.player.char.respawnchar:FireServer()
+end)
+
+local Button = PlayerSection:AddButton("HipHeight (Normal)", function()
+	game:GetService("Workspace")[game.Players.LocalPlayer.Name]:FindFirstChildOfClass('Humanoid').HipHeight = 0
+end)
+
+local Button = PlayerSection:AddButton("HipHeight (2)", function()
+	game:GetService("Workspace")[game.Players.LocalPlayer.Name]:FindFirstChildOfClass('Humanoid').HipHeight = 2
+end)
