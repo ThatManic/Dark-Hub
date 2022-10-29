@@ -1,0 +1,38 @@
+-- Library
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/RegularVynixu/UI-Libraries/main/Vynixius/Source.lua"))()
+
+-- Window
+local Window = Library:AddWindow({
+	title = {"! Maniac", "Dark Hub"},
+	theme = {
+		Accent = Color3.fromRGB(143, 0, 255)
+	},
+	key = Enum.KeyCode.LeftControl,
+	default = true
+})
+
+-- Tabs
+local MainTab = Window:AddTab("Main", {default = false})
+local PlayerTab = Window:AddTab("LocalPlayer", {default = false})
+
+-- Sections
+local AutoFarmSection = MainTab:AddSection("AutoFarm", {default = false})
+local MovementSection = PlayerTab:AddSection("Movement", {default = false})
+
+-- AutoFarm
+local Button = AutoFarmSection:AddButton("Auto Deflect", function()
+	    while true do
+        wait()
+        local thing1 = game.Players.LocalPlayer.Character.HumanoidRootPart
+        local thing2 = game:GetService("Workspace"):WaitForChild('Ball').Main
+        local distance = (thing2.Position - thing1.Position).magnitude 
+        if distance <= 16 then --DONT CHANGE MAYBE CHANGE TO 15 IFYW BUT ITS GOOD DONT GO OVER 16
+            mouse1click()
+        end
+    end  
+end)
+
+-- Movement
+local Slider = MovementSection:AddSlider("WalkSpeed", 16, 250, 16, {toggleable = true, default = false, flag = "Slider_Flag", fireontoggle = true, fireondrag = true, rounded = true}, function(speed, bool)
+	game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = speed
+end)
